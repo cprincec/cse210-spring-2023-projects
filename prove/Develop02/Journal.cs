@@ -60,5 +60,6 @@ public class Journal
             entry.SetEntry(question, answer, date, time);
             _entries.Add(entry);
         }
+        DisplayEntries();
     }
 }

@@ -67,7 +67,6 @@ class Program
             {
                 String filename = terminal.ReadInput("What is the name of the file you want to load: ");
                 journal.LoadJournal(filename);
-                journal.DisplayEntries();
             }
             // save journal
             else if (menuOption == "5")
