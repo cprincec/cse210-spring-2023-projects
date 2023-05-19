@@ -32,8 +32,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}~|~{entry._time}~|~{entry._question}~|~{entry._answer}");
-               
+                outputFile.WriteLine($"{entry._date}~|~{entry._time}~|~{entry._question}~|~{entry._answer}"); 
             }
         }
     }

@@ -14,6 +14,7 @@ public class Library
             string reference = newLine[0];
             string text = newLine[1];
             string strippedText = text.Trim('"');
+            
             _scriptures.Add(reference, strippedText);
         }
     }
@@ -22,6 +23,7 @@ public class Library
     {
         Random randomGen = new Random();
         int randomIndex = randomGen.Next(_scriptures.Count);
+        
         return _scriptures.ElementAt(randomIndex);
     }
 }

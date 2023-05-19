@@ -4,23 +4,14 @@ class Program
 {   
     static void Main(string[] args)
     {
-        // instantiate terminal services class
         TerminalServices terminal = new TerminalServices();
-
-        // instantiate prompt generator
         PromptGenerator promptGen = new PromptGenerator();
-
-        // Instantiate the Journal class
         Journal journal = new Journal();
         string menuOption;
-
         terminal.PrintOutput("\nWelcome to the Journal Program!");
         do
         {
-            // display the menu
             terminal.DisplayMenu();
-
-            // store the user selected menu option
             menuOption = terminal.ReadInput(">> ");
 
             if (menuOption == "1")
@@ -38,37 +29,26 @@ class Program
                 }
                 else
                 {
-                    // Instantiate Entry
-                    Entry entry = new Entry();
-
-                    // display the question/prompt and store the input
-                    String answer = terminal.ReadInput(prompt + " ");
-
-                    // save the question and answer as entry attributes
-                    entry.SetEntry(prompt, answer);
-
-                    // Add the entry to journal entries
-                    journal.AddEntry(entry);
+                    Entry entry = new Entry(); 
+                    String answer = terminal.ReadInput(prompt + " "); // display the question/prompt and store the input
+                    entry.SetEntry(prompt, answer); // save the question and answer as entry attributes
+                    journal.AddEntry(entry); // Add the entry to journal entries
                 }
-
             }
             else if (menuOption == "2")
             {
                 string newPrompt = terminal.ReadInput("What prompt would you like to add?");
                 promptGen.AddPrompt(newPrompt);
             }
-            // display journal
             else if (menuOption == "3")
             {
                 journal.DisplayEntries();
             }
-            // load journal
             else if (menuOption == "4")
             {
                 String filename = terminal.ReadInput("What is the name of the file you want to load: ");
                 journal.LoadJournal(filename);
             }
-            // save journal
             else if (menuOption == "5")
             {
                 String filename = terminal.ReadInput("What name would want to save this journal as? ");

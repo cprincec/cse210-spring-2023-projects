@@ -20,7 +20,6 @@ public class Scripture
     public bool IsCompletelyHidden()
     {
         bool completelyHidden = true;  // Initialize to true
-
         foreach (Word word in _texts)
         {
             if (!word.IsHidden())  // Check if any word is not hidden
@@ -65,7 +64,7 @@ public class Scripture
                 Random randomGen = new Random();
                 int randomindex = randomGen.Next(numOfWords);
 
-                // Ensure the word at the index of the random number is not already hidden
+                // Ensure the word at the random index is not already hidden
                 while (_texts[randomindex].IsHidden())
                 {
                     randomindex = randomGen.Next(numOfWords);
