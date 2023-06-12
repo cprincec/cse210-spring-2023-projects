@@ -15,49 +15,25 @@ public class BreathingActivity : Activity
         _breathingOutDuration = (40.0 / 100) * _interval;
     }
 
-    public void RunActivity()
-    {   
-        DisplayStartMessage();
+    public void Breathe(string breathingType, int duration)
+    {
+        Console.Write(breathingType);
+        CountDown(duration);
+    }
 
+    public void RunActivity()
+    {
+        DisplayStartMessage();
         Console.Clear();
         Console.WriteLine("Get ready...");
         Spin(_spinnerDuration);
 
         DateTime activityStartTime = DateTime.Now;
         DateTime activityEndTime = activityStartTime.AddSeconds(_activityDuration);
-
         while (DateTime.Now < activityEndTime)
         {
-            Console.Write("\nBreathe in...");
-
-            DateTime inStartTime = DateTime.Now;
-            DateTime inEndTime = inStartTime.AddSeconds(_breathingInDuration);
-
-            int inCounter = (int)_breathingInDuration;
-            while (DateTime.Now < inEndTime)
-            {
-                Console.Write(inCounter);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-
-                inCounter--;
-            }
-
-            Console.Write("\nNow breathe out...");
-
-            DateTime outStartTime = DateTime.Now;
-            DateTime outEndTime = outStartTime.AddSeconds(_breathingOutDuration);
-
-            int outCounter = (int)_breathingOutDuration;
-            while (DateTime.Now < outEndTime)
-            {
-                Console.Write(outCounter);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-
-                outCounter--;
-            }
-
+            Breathe("\nBreathe in...", (int)_breathingInDuration);
+            Breathe("\nNow breathe out...", (int)_breathingOutDuration);
             Console.WriteLine();
         }
         DisplayEndMessage();
