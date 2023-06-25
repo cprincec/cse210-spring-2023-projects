@@ -3,17 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Develop05
+public class Goal
 {
-    public abstract class Goal
+    private int _basePoint;
+    private string _description;
+    private bool _isComplete;
+    private string _name;
+
+    public Goal(string name, string desc, int basePoint)
     {
-        private int basePoint;
-        private string description;
-        private bool isComplete;
-        private string name;
+        _name = name;
+        _description = desc;
+        _basePoint = basePoint;
+        _isComplete = false;
+    }
 
-        public abstract bool CheckCompletionStatus();
+    public string Name
+    {
+        get => _name;
+        set => _name = value;
+    }
 
-        public abstract int RecordEvent();
+    public int BasePoint
+    {
+        get => _basePoint;
+        set => _basePoint = value;
+    }
+
+    public string Description
+    {
+        get => _description;
+        set => _description = value;
+    }
+
+    public bool IsComplete
+    {
+        get => _isComplete;
+        set => _isComplete = value;
+    }
+
+    public virtual int RecordEvent()
+    {
+        IsComplete = true;
+        return BasePoint;
     }
 }

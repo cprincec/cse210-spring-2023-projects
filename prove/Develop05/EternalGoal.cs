@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Develop05
+public class EternalGoal : Goal
 {
-    public class EternalGoal : Goal
+    // private DateTime _lastRecordedDate;
+    private int _numOfTimesAccomplished;
+
+    public EternalGoal(string name, string desc, int basePoint) : base(name, desc, basePoint)
     {
-        private DateTime _lastRecordedDate;
-        private int _numOfTimesAccomplished;
-        private int _bonusPoints;
+        // _lastRecordedDate = DateTime.Now;
+        _numOfTimesAccomplished = 0;
+    }
 
-        public int RecordEvent()
-        {
-            throw new System.NotImplementedException();
-        }
+    public override int RecordEvent()
+    {
+        _numOfTimesAccomplished++;
+        return BasePoint;
+    }
 
-        public int GetNumOfTimesAccomplished()
-        {
-            throw new System.NotImplementedException();
-        }
+    public int CheckProgress()
+    {
+        return _numOfTimesAccomplished;
     }
 }

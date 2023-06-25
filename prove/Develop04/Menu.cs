@@ -1,6 +1,6 @@
 public class Menu 
 {
-    List<string> _menu = new List<string> {
+    private List<string> _menu = new List<string> {
         "Start breathing activity",
         "Start reflecting activity",
         "Start listening actvity",

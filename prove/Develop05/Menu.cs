@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Develop05
+public class Menu
 {
-    public class Menu
-    {
-        private int _menuList;
+    private List<string> _menuList = new List<string> {
+            "Create New goal",
+            "List goals",
+            "Save Goals",
+            "Load goals",
+            "Record Event",
+            "Quit"
+        };
 
-        public string DisplayMenu()
+    public string DisplayMenu(int totalPoints)
+    {
+        Console.WriteLine($"You now have {totalPoints} points.\n");
+        Console.WriteLine("Menu options: ");
+        for (int i = 0; i < _menuList.Count; i++)
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine($"  {i + 1}. {_menuList[i]}");
         }
+        Console.Write("Select a choice from the menu: ");
+        return Console.ReadLine();
     }
 }

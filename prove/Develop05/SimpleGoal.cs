@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Develop05
+public class SimpleGoal : Goal
 {
-    public class SimpleGoal : Goal
+    private DateTime _completionDate;
+
+    public SimpleGoal(string name, string desc, int basePoint) : base(name, desc, basePoint)
     {
-        private DateTime _completionDate;
-
-        public int RecordEvent()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool CheckCompletionStatus()
-        {
-            throw new System.NotImplementedException();
-        }
+        _completionDate = DateTime.Now;
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 public class ListingActivity : Activity
 {
-    List<string> _prompts = new List<string> {
+   private List<string> _prompts = new List<string> {
         "Who are people that you appreciate?",
         "What are personal strengths of yours?",
         "Who are people that you have helped this week?",
@@ -10,7 +10,7 @@ public class ListingActivity : Activity
         "Who are some of your personal heroes?"
     };
 
-    List<string> _responses = new List<string>();
+    private List<string> _responses = new List<string>();
     public ListingActivity()
     {
         _name = "Listing";
