@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class GoalTracker
 {
@@ -98,21 +100,25 @@ public class GoalTracker
     {
         // foreach (Goal goal in _goals)
         // {
-
-            string serializedGoal = JsonSerializer.Serialize(_goals);
-            // if (goal is EternalGoal eternalGoal)
-            // {
-            //     serializedGoal = JsonSerializer.Serialize(eternalGoal);
-            // }
-            // else if (goal is ChecklistGoal checklistGoal)
-            // {
-            //     serializedGoal = JsonSerializer.Serialize(checklistGoal);
-            // }
-            // else
-            // {
-            //     serializedGoal = JsonSerializer.Serialize(goal);
-            // }
-            Console.WriteLine(serializedGoal);
+        JsonSerializerOptions options = new JsonSerializerOptions
+        {
+            Converters = { new GoalConverter() },
+            WriteIndented = true // Optional: to format the JSON output with indentation
+        };
+        string serializedGoal = JsonSerializer.Serialize(this, options);
+        // if (goal is EternalGoal eternalGoal)
+        // {
+        //     serializedGoal = JsonSerializer.Serialize(eternalGoal);
+        // }
+        // else if (goal is ChecklistGoal checklistGoal)
+        // {
+        //     serializedGoal = JsonSerializer.Serialize(checklistGoal);
+        // }
+        // else
+        // {
+        //     serializedGoal = JsonSerializer.Serialize(goal);
+        // }
+        Console.WriteLine(serializedGoal);
         // }
 
     }
@@ -120,5 +126,18 @@ public class GoalTracker
     public void LoadGoals(string filename)
     {
         throw new System.NotImplementedException();
+    }
+}
+public class GoalConverter : JsonConverter<Goal>
+{
+    public override Goal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        // Implement deserialization logic if needed
+        throw new NotImplementedException();
+    }
+
+    public override void Write(Utf8JsonWriter writer, Goal value, JsonSerializerOptions options)
+    {
+        JsonSerializer.Serialize(writer, value, value.GetType(), options);
     }
 }

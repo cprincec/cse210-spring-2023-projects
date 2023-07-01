@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json;
 
 class Program
 {
@@ -77,6 +78,9 @@ class Program
             else if (choice == "3")
             {
                 goalTracker.SaveGoals();
+                // string serializedGoal = JsonSerializer.Serialize(goalTracker);
+                // Console.WriteLine(serializedGoal);
+
                 Console.WriteLine();
                 choice = menu.DisplayMenu(goalTracker.TotalPointsEarned);
             }

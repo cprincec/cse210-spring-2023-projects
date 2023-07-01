@@ -16,6 +16,24 @@ public class ChecklistGoal : Goal
         _bonusPoints = bonus;
         _progress = 0;
     }
+
+    public int ToBeAccomplished
+    {
+        get => _numOfTimesToBeAccomplished;
+        set => _numOfTimesToBeAccomplished = value;
+    }
+
+    public int BonusPoints
+    {
+        get => _bonusPoints;
+        set => _bonusPoints = value;
+    }
+
+    public int Progress
+    {
+        get => _progress;
+        set => _progress = value;
+    }
     public override int RecordEvent()
     {
         if (_progress == _numOfTimesToBeAccomplished)
